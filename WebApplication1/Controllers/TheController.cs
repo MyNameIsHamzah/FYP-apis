@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApplication1.Controllers
@@ -8,6 +9,7 @@ namespace WebApplication1.Controllers
     public class TheController : ControllerBase
     {
 
+        [EnableCors("_myAllowSpecificOrigins")]
         [HttpGet("GetBMI")]
         public double GetTheirBMI(double heightinM, double weightinKG)
         {
@@ -17,7 +19,7 @@ namespace WebApplication1.Controllers
             return Math.Round(BMI, 2);
         }
 
-
+        [EnableCors("_myAllowSpecificOrigins")]
         [HttpGet("GetTDEE")]
         public double GetTheirTDEE(double heightinM, double weightinKG, int age, string gender, string activitylevel)
         {
